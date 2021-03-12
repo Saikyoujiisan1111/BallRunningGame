@@ -10,11 +10,12 @@ public class player_move : MonoBehaviour
     int velK = 0;
     Vector3 vel;
     public bool grounded = false;
+    Vector3 start;
+    public bool gameover = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Vector3 start;
         start = gameObject.transform.position;
     }
 
@@ -44,6 +45,10 @@ public class player_move : MonoBehaviour
         }
         Debug.Log(vel.z);
         rb.velocity = vel;
+        if ()
+        {
+            
+        }
     }
     public void Junp()
     {

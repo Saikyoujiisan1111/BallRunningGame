@@ -25,16 +25,5 @@ public class speedUp : MonoBehaviour
             pm.Speedup();
             Debug.Log("hoge");
         }
-        if (fumu.gameObject.tag == "ground")
-        {
-            pm.grounded = true;
-        }
-    }
-    public void OnTriggerExit(Collider ha)
-    {
-        if (ha.gameObject.tag == "ground")
-        {
-            pm.grounded = false;
-        }
     }
 }

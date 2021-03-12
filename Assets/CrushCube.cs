@@ -6,11 +6,13 @@ public class CrushCube : MonoBehaviour
 {
     Vector3 pos;
     GameObject player;
+    player_move pm;
     // Start is called before the first frame update
     void Start()
     {
         pos = gameObject.transform.position;
         player = GameObject.Find("player");
+        pm = player.GetComponent<player_move>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,8 @@ public class CrushCube : MonoBehaviour
         if (col.gameObject.name == "player")
         {
             player.SetActive(false);
+            pm.gameover = true;
+            
         }
     }
 }
