@@ -32,9 +32,7 @@ public class CrushCube : MonoBehaviour
     {
         if (col.gameObject.name == "player")
         {
-            player.SetActive(false);
             pm.gameover = true;
-            
         }
     }
 }

@@ -7,16 +7,24 @@ public class player_move : MonoBehaviour
     Rigidbody rb;
     bool isJunp = true;
     public int speed = 1;
-    int velK = 0;
+    //int velK = 0;
     Vector3 vel;
     public bool grounded = false;
-    Vector3 start;
+    float start;
     public bool gameover = false;
+    float finish;
+    public float score = 0;
+    goalmasu gm;
+    public GameObject Gy;
+    public bool owari = false; //スコアを表示させる時に使う。trueにする　＝　表示！
+    public GameObject button;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        start = gameObject.transform.position;
+        start = gameObject.transform.position.z;
+        gm = Gy.GetComponent<goalmasu>();
+        
     }
 
     // Update is called once per frame
@@ -33,7 +41,6 @@ public class player_move : MonoBehaviour
             for (int i = speed; i > 1; i--)
             {
                 vel.z *= 2;
-                Debug.Log("hoge2");
             }
         }
 
@@ -43,11 +50,24 @@ public class player_move : MonoBehaviour
             vel.y = 13;
             isJunp = false;
         }
-        Debug.Log(vel.z);
         rb.velocity = vel;
-        if ()
+        if (gameObject.transform.position.y < -10)
         {
-            
+            gameover = true;
+        }
+        if (gameover == true)
+        {
+            finish = gameObject.transform.position.z;
+            finish -= start;
+            gm.gmasu -= start;
+            score = (finish / gm.gmasu );
+            if (gm.goalhantei == true)
+            {
+                score = 1;
+            }
+            owari = true;
+            button.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
     public void Junp()
@@ -57,7 +77,6 @@ public class player_move : MonoBehaviour
     public void Speedup()
     {
         speed += 1;
-        Debug.Log("hoge1");
     }
     /*public void OnTriggerEnter(Collider fureru)
     {
